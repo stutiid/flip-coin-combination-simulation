@@ -79,19 +79,19 @@ do
 				((HHT++))
 			fi
 		else
-          flip=$((RANDOM%2))
+         flip=$((RANDOM%2))
          if [ $flip -eq 0 ]
          then
             ((HTH++))
          else
             ((HTT++))
          fi
-      fi
+		fi
    else
       flip=$((RANDOM%2))
       if [ $flip -eq 0 ]
       then
-          flip=$((RANDOM%2))
+         flip=$((RANDOM%2))
          if [ $flip -eq 0 ]
          then
             ((THH++))
@@ -99,7 +99,7 @@ do
             ((THT++))
          fi
       else
-          flip=$((RANDOM%2))
+         flip=$((RANDOM%2))
          if [ $flip -eq 0 ]
          then
             ((TTH++))
