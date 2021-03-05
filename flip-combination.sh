@@ -29,11 +29,11 @@ do
 		((T++))
 	fi
 done
-coinCombination["H"]=$(($(($H*100))/$count))
-coinCombination["T"]=$(($T*100/$count))
+coinCombination[1]=$(($(($H*100))/$count))
+coinCombination[2]=$(($T*100/$count))
 
 #doublet combination
-count=30
+count=60
 for ((i=1; i<=count; i++))
 do
    flip=$((RANDOM%2))
@@ -56,13 +56,13 @@ do
       fi
    fi
 done
-coinCombination["HH"]=$(($HH*100/$count))
-coinCombination["HT"]=$(($HT*100/$count))
-coinCombination["TH"]=$(($TH*100/$count))
-coinCombination["TT"]=$(($TT*100/$count))
+coinCombination[3]=$(($HH*100/$count))
+coinCombination[4]=$(($HT*100/$count))
+coinCombination[5]=$(($TH*100/$count))
+coinCombination[6]=$(($TT*100/$count))
 
 #triplet combination
-count=20
+count=60
 for ((i=1; i<=count; i++))
 do
    flip=$((RANDOM%2))
@@ -109,14 +109,72 @@ do
       fi
    fi
 done
-coinCombination["HHH"]=$(($HHH*100/$count))
-coinCombination["HHT"]=$(($HHT*100/$count))
-coinCombination["HTH"]=$(($HTH*100/$count))
-coinCombination["HTT"]=$(($HTT*100/$count))
-coinCombination["THH"]=$(($THH*100/$count))
-coinCombination["THT"]=$(($THT*100/$count))
-coinCombination["TTH"]=$(($TTH*100/$count))
-coinCombination["TTT"]=$(($TTT*100/$count))
-
+coinCombination[7]=$(($HHH*100/$count))
+coinCombination[8]=$(($HHT*100/$count))
+coinCombination[9]=$(($HTH*100/$count))
+coinCombination[10]=$(($HTT*100/$count))
+coinCombination[11]=$(($THH*100/$count))
+coinCombination[12]=$(($THT*100/$count))
+coinCombination[13]=$(($TTH*100/$count))
+coinCombination[14]=$(($TTT*100/$count))
 echo ${coinCombination[@]}
 
+max=${coinCombination[1]}
+n=1
+for ((i=1; i<=14; i++))
+do
+	if [ $max -lt ${coinCombination[$i]} ]
+	then
+		max=${coinCombination[$i]}
+		n=$i
+	fi
+done
+
+echo $n
+case $n in
+	1)
+		echo "winning combination is H with $max winning"
+	;;
+	2)
+      echo "winning combination is T with $max winning"
+   ;;
+	3)
+      echo "winning combination is HH with $max winning"
+   ;;
+	4)
+      echo "winning combination is HT with $max winning"
+   ;;
+	5)
+      echo "winning combination is TH with $max winning"
+   ;;
+ 	6)
+      echo "winning combination is TT with $max winning"
+   ;;
+ 	7)
+      echo "winning combination is HHH with $max winning"
+   ;;
+ 	8)
+      echo "winning combination is HHT with $max winning"
+   ;;
+ 	9)
+      echo "winning combination is HTH with $max winning"
+   ;;
+ 	10)
+      echo "winning combination is HTT with $max winning"
+   ;;
+ 	11)
+      echo "winning combination is THH with $max winning"
+   ;;
+ 	12)
+      echo "winning combination is THT with $max winning"
+   ;;
+ 	13)
+      echo "winning combination is TTH with $max winning"
+   ;;
+ 	14)
+      echo "winning combination is TTT with $max winning"
+   ;;
+	*)
+		echo "no one winning"
+	;;
+esac
